@@ -22,7 +22,7 @@ html, body {
 }
 
 #filters.open {
-    min-width: 400px;
+    min-width: 300px;
     padding-left: 8px;
     padding-right: 8px;
 }

@@ -27,7 +27,8 @@ gulp.task('browserify', function () {
 const src = [
     '*.html',
     '*.css',
-    'icons/**/*'
+    'icons/**/*',
+    '*.ico'
 ]
 
 gulp.task('copy', function () {

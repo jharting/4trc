@@ -47,17 +47,17 @@
         <div id="filters" class="closed">
             <div class="filters-content">
                 <div class="row">
-                    <div class="col-sm-4">Show unrated</div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-5">Show unrated</div>
+                    <div class="col-sm-7">
                         <input type="checkbox" onclick="filterUnrated(this.checked)" {{checked}}/>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
+                    <div class="col-sm-5">
                         Min rating (
                         <span id="filter-min-rating-value">{{minRating}}</span> )
                     </div>
-                    <div class="col-sm-8">
+                    <div class="col-sm-7">
                         <input type="range" min="0" max="100" value="{{minRating}}" step="1" oninput="filterMinRating(this.value)" />
                     </div>
                 </div>
