@@ -38,6 +38,8 @@ gulp.task('copy', function () {
     gulp.src(src, {
         base: '.'
     })
-    .pipe(replace('${mapKey}', config.mapKey))
+    .pipe(replace('${mapKey}', config.mapKey, {
+        skipBinary: true
+    }))
     .pipe(gulp.dest('./build'));
 })
