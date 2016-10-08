@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>4trc Restaurants</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.klokantech.com/maptilerlayer/v1/index.js"></script>
+    <script src="./main.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=${mapKey}&callback=init" async defer></script>
+
+    <script id="venue-window-template" type="text/x-handlebars-template">
+        <div class="info-window">
+            <h3>{{venue.trc.name}}</h3>
+            <div class="row">
+                <div>
+                    <label class="col-xs-3">Address:</label>
+                    <span class="col-xs-9">{{venue.trc.address}}</span>
+                </div>
+            </div>
+            {{#if venue.foursquare}}
+            <h3>{{venue.foursquare.name}}</h3>
+            <div class="row">
+                <label class="col-xs-3">Address:</label>
+                <span class="col-xs-9">{{venue.foursquare.address}}</span>
+            </div>
+            <div class="row">
+                <label class="col-xs-3">Categories:</label>
+                <span class="col-xs-9">{{venue.foursquare.categories}}</span>
+            </div>
+            <div class="row">
+                <label class="col-xs-3">Rating:</label>
+                <span class="col-xs-9"><strong>{{venue.foursquare.rating}}</strong></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <a href="{{venue.foursquare.furl}}" target="_blank">View on Foursquare</a>,
+                    <a href="{{venue.foursquare.url}}" target="_blank">Website</a>
+                </div>
+            </div>
+            {{/if}}
+        </div>
+    </script>
+    <script id="filter-control-template" type="text/x-handlebars-template">
+        <div id="filters" class="closed">
+            <div class="filters-content">
+                <div class="row">
+                    <div class="col-sm-4">Show unrated</div>
+                    <div class="col-sm-8">
+                        <input type="checkbox" onclick="filterUnrated(this.checked)" {{checked}}/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        Min rating (
+                        <span id="filter-min-rating-value">{{minRating}}</span> )
+                    </div>
+                    <div class="col-sm-8">
+                        <input type="range" min="0" max="100" value="{{minRating}}" step="1" oninput="filterMinRating(this.value)" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span class="filter-toggle" onclick="filterToggle()">
+            <span class="glyphicon glyphicon-chevron-right"/>
+        </span>
+    </script>
+</head>
+
+<body>
+    <div id="map"></div>
+</body>
+
+</html>
